@@ -14,10 +14,6 @@
     top: 8px;
 }
 
-.cs div.with-opacity {
-    display: none;
-}
-
 .active {
     background-position: left center;
 }

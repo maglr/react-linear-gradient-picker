@@ -4,7 +4,7 @@ import { STOP_PROP_TYPES } from '../propTypes';
 import useStopDragging from './hooks/useStopDragging';
 import './index.css';
 
-const ColorStop = ({ stop, limits, onPosChange, onDeleteColor, onDragStart = noop, onDragEnd = noop}) => {
+const ColorStop = ({ stop, limits, onPosChange, onDeleteColor, onDragStart = noop, onDragEnd = noop, showStopColorOpacity}) => {
 	const colorStopRef = useRef();
 	const [drag] = useStopDragging({
 		stop,
@@ -25,7 +25,7 @@ const ColorStop = ({ stop, limits, onPosChange, onDeleteColor, onDragStart = noo
 			onMouseDown={drag}
 			onTouchStart={drag}>
 			<div style={{ backgroundColor: color }}/>
-			<div className={'with-opacity'} style={{ backgroundColor: color, opacity: opacity }}/>
+			{showStopColorOpacity && <div className={'with-opacity'} style={{ backgroundColor: color, opacity: opacity }}/>}
 		</div>
 	);
 };

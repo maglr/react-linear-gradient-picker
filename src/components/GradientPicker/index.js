@@ -43,7 +43,8 @@ const GradientPicker = ({
 	children,
 	flatStyle = false,
 	onPaletteChange,
-	onColorStopSelect = noop
+	onColorStopSelect = noop,
+	showStopColorOpacity = false
 }) => {
 	palette = mapIdToPalette(palette);
 
@@ -84,7 +85,7 @@ const GradientPicker = ({
 	};
 
 	useEffect(() => {
-		onColorStopSelect(activeColorId);
+		onColorStopSelect(getPaletteColor(palette, activeColorId));
 	}, [activeColorId]);
 
 	const handleColorSelect = (color, opacity = 1) => {
@@ -155,6 +156,7 @@ const GradientPicker = ({
 				onAddColor={handleColorAdd}
 				onDeleteColor={handleColorDelete}
 				onDragStart={onStopDragStart}
+				showStopColorOpacity={showStopColorOpacity}
 			/>
 			{colorPicker()}
 		</div>
